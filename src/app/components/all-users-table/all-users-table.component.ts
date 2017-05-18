@@ -47,6 +47,7 @@ export class AllUsersTableComponent implements OnInit{
                 this.userActivity = data[0];
                 this.users = data[1];
                 this.compoundData();
+                console.log(this.allUsers);
             }
         );
     }

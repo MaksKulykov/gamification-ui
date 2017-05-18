@@ -30,6 +30,12 @@ export class GamificationService{
     let request = "{\"toIds\":[\""+uuid+"\"]}";
     let options = new RequestOptions({headers: this.headers});
     return this.http.post(this.urlUserDetails, request, options)
-        .map(this.extractData);
+        .map(this.extractData2);
+  }
+
+  private extractData2(res: Response): Array<any> {
+    console.log(res);
+    let body = res.json();
+    return body || {};
   }
 }

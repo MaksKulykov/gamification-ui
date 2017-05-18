@@ -11,10 +11,11 @@ import {UserDetails}                     from "../../model/userDetails";
 
 export class UserDetailsTableComponent implements OnInit {
     title = 'User Details Table';
-    @Input('user')
+   // @Input('user')
     // user: User;
     user = {name:"bill",uuid:"bill"};
-    userDetails : UserDetails;
+    userDetails : UserDetails[] = [];
+    isUserDetails = false;
     // userDetails : UserDetails = {
     //     user:"AAA111",
     //     details:[
@@ -29,7 +30,9 @@ export class UserDetailsTableComponent implements OnInit {
 
     getUserDetails() {
         this.gamificationService.getUserDetails(this.user.uuid)
-            .subscribe(data  => this.userDetails);
+            .subscribe(data  => {this.userDetails = data;
+            console.log(this.userDetails);
+            this.isUserDetails = true;})
     }
 
     ngOnInit(): void {
