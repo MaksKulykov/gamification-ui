@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit, EventEmitter, Input, Output} from '@angular/core';
 import { GamificationService}            from '../../service/gamification.service';
 import {UserActivity}                    from '../../model/userActivity';
 import {UserService}                     from "../../service/user.service";
@@ -71,6 +71,12 @@ export class AllUsersTableComponent implements OnInit{
         this.viewTable = true;
     }
 
+    @Output() getUserDetails = new EventEmitter<string>();
+    getUuid(uuid: string): void {
+        console.log(uuid);
+        this.getUserDetails.emit(uuid);
+    }
+
     @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
         console.log(event);
@@ -82,10 +88,10 @@ export class AllUsersTableComponent implements OnInit{
         }
     }
 
-    onSelect(user: AllUsers, i: number): void {
+/*    onSelect(user: AllUsers, i: number): void {
         this.selectedUser = user;
         this.selectedIndex = i
-    }
+    }*/
 
     setKey = (th: string) => {
         this.counter === 2 ? this.counter = 0 : this.counter++;

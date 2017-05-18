@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody *ngIf="isUserDetails == true">
-                    <tr *ngFor="let achievement of userDetails[0].details; let i = index">
+                    <tr *ngFor="let achievement of userDetails.details; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{achievement.from}}</td>
                         <td>{{achievement.to}}</td>
@@ -30,3 +30,5 @@
         </div>
     </div>
 </div>
+<all-users-table (getUserDetails)="getUserDetails($event)"></all-users-table>
+

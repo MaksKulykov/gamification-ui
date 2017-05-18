@@ -13,15 +13,15 @@
                 </tr>
                 </thead>
                 <tbody  *ngIf="viewTable == true">
-                <tr *ngFor="let user of allUsers | sorting: key : counter; let i = index"
-                    [class.selected]="user === selectedUser"
-                    (click)="onSelect(user, i)">
+                <tr *ngFor="let user of allUsers | sorting: key : counter; let i = index">
+                    <!--[class.selected]="user === selectedUser"
+                    (click)="onSelect(user, i)">-->
                     <td>{{i+1}}</td>
                     <td>{{user.name}}</td>
                     <td>{{user.slack}}</td>
                     <td>{{user.skype}}</td>
                     <td>{{user.point}}</td>
-                    <td class="btnDetails"><button class="btn btn-default" >btnDetails</button></td>
+                    <td class="btnDetails"><button class="btn btn-default" (click)="getUuid(user.uuid)">btnDetails</button></td>
                 </tr>
                 </tbody>
             </table>
